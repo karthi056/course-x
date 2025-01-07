@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Courses by Preferences</title>
+    
+    <style>
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("images/hero-bg.jpg") center/cover no-repeat;
+    font-family: Arial, sans-serif;
+}
+
+/* Center the container and apply a background to the form */
+.container {
+    text-align: center;
+    background-color: transparent; /* A slightly lighter dark background */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling text labels and inputs */
+h2, h3, label {
+    color: white; /* White text color */
+}
+
+input[type="text"] {
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+    max-width: 300px; /* Restrict the width of the input boxes */
+    border: 1px solid #fff;
+    border-radius: 5px;
+    background-color: #2c3e50;
+    color: white;
+    font-size: 16px;
+}
+
+/* Button styling */
+button {
+    padding: 10px 20px;
+    background-color: #e74c3c; /* Red color for the button */
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #c0392b; /* Slightly darker red on hover */
+}
+
+/* Styling results section */
+#results {
+    margin-top: 20px;
+}
+
+#bestChoices, #goodChoices, #otherChoices {
+    color: white; /* White text for the results section */
+}
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <h2>Select Subjects</h2>
+        <form id="preferencesForm" action="process_preference.php" method="POST">
+            <label for="subject1">Subject 1:</label>
+            <input type="text" id="subject1" name="subject1" required>
+            <br>
+            <label for="subject2">Subject 2:</label>
+            <input type="text" id="subject2" name="subject2" required>
+            <br>
+            <label for="subject3">Subject 3:</label>
+            <input type="text" id="subject3" name="subject3" required>
+            <br>
+            <label for="subject4">Subject 4:</label>
+            <input type="text" id="subject4" name="subject4" required>
+            <br>
+            <button type="submit">Submit Preferences</button>
+        </form>
+
+        <div id="results">
+            <h3>Results:</h3>
+            <div id="bestChoices"></div>
+            <div id="goodChoices"></div>
+            <div id="otherChoices"></div>
+        </div>
+    </div>
+
+    <script>
+        // Simple form validation could be done in JS here
+        const form = document.getElementById('preferencesForm');
+        form.addEventListener('submit', function (e) {
+            const subject1 = document.getElementById('subject1').value.trim();
+            const subject2 = document.getElementById('subject2').value.trim();
+            const subject3 = document.getElementById('subject3').value.trim();
+            const subject4 = document.getElementById('subject4').value.trim();
+            
+            if (!subject1 || !subject2 || !subject3 || !subject4) {
+                e.preventDefault();
+                alert('All fields are required');
+            }
+        });
+    </script>
+</body>
+</html>
+
+
